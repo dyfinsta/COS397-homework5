@@ -1,0 +1,16 @@
+Metadata-Version: 2.4
+Name: basic_sort_UNIQUE_SUFFIX
+Version: 0.0.1
+Summary: An exercise in the capstone course
+Author-email: Author1 <author1@maine.edu>, Author2 <author2@maine.edu>
+Project-URL: Bug Tracker, https://github.com/pypa/python_package_exercise/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache 2.0
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.9.0
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Dynamic: license-file
+
+# COS397-homework5
+Homework 5 for COS - Intro to DevOps CI/CD

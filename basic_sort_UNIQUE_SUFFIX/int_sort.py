@@ -29,10 +29,12 @@ def bubble(int_list):
 
 
 def quick(int_list):
-    """
-    qsort docstring
-    """
-    print("quick sort")
+    if len(int_list) <= 1:
+        return int_list
+    pivot = int_list[0]
+    left = [x for x in int_list[1:] if x < pivot]
+    right = [x for x in int_list[1:] if x >= pivot]
+    return quick(left) + [pivot] + quick(right)
 
 
 def insertion(int_list):
