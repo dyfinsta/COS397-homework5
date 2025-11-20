@@ -18,6 +18,8 @@
 
 import pytest
 import numpy as np
+import time
+import psutil
 from basic_sort_UNIQUE_SUFFIX import int_sort
 
 def is_sorted(int_list):
@@ -36,8 +38,27 @@ def test_bubble(int_lists):
         assert is_sorted(sorted_lst), f"bubble sort failed on {lst}"
 
 def test_quick(int_lists):
+    process = psutil.Process()
     for lst in int_lists:
+        # Record runtime at start
+        realtime_start = time.perf_counter()
+        cpu_start = process.cpu_times().user + process.cpu_times().system
+
+        # Run quicksort
         sorted_lst = int_sort.quick(lst.copy())
+
+        # Record runtime at finish
+        realtime_end = time.perf_counter()
+        cpu_end = process.cpu_times().user + process.cpu_times().system
+        
+        #print results
+        real_time = realtime_end - realtime_start
+        cpu_time = cpu_end - cpu_start
+        print(f"\nInput list: {lst}")
+        print(f"Sorted list: {sorted_lst}")
+        print(f"Real time: {real_time:.6f} seconds")
+        print(f"CPU time: {cpu_time:.6f} seconds")
+
         assert is_sorted(sorted_lst), f"quick sort failed on {lst}"
 
 def test_insertion(int_lists):
