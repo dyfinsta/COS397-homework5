@@ -22,12 +22,12 @@ This module sorts lists of integers...
 
 
 def bubble(int_list):
-    a= int_list.copy()
+    a = int_list.copy()
     n = len(a)
     for i in range(n):
-        for j in range(0, n-i-1):
-            if a[j] > a[j+1]:
-                a[j], a[j+1] = a[j+1], a[j]
+        for j in range(0, n - i - 1):
+            if a[j] > a[j + 1]:
+                a[j], a[j + 1] = a[j + 1], a[j]
     return a
 
 
@@ -44,7 +44,7 @@ def insertion(int_list):
     sorted_list = int_list.copy()
     for i in range(len(int_list)):
         j = i
-        while j > 0 and sorted_list[j-1] > sorted_list[j]:
-            sorted_list[j],sorted_list[j-1] = sorted_list[j-1],sorted_list[j]
+        while j > 0 and sorted_list[j - 1] > sorted_list[j]:
+            sorted_list[j], sorted_list[j - 1] = sorted_list[j - 1], sorted_list[j]
             j -= 1
     return sorted_list
