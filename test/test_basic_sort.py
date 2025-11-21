@@ -34,8 +34,22 @@ def int_lists():
 
 
 def test_bubble(int_lists):
+    process= psutil.Process()
     for lst in int_lists:
+        #Measure CPU Usage before sorting
+        cpu_start= process.cpu_times().user + process.cpu_times().system
+        
+        # Run bubble sort
         sorted_lst = int_sort.bubble(lst.copy())
+        # Measure CPU Usage after sorting
+        cpu_end= process.cpu_times().user + process.cpu_times().system
+        cpu_time= cpu_end - cpu_start
+
+        # print results
+        print(f"\nInput list: {lst}")
+        print(f"Sorted list: {sorted_lst}")
+        print(f"CPU time: {cpu_time:.6f} seconds")
+        
         assert is_sorted(sorted_lst), f"bubble sort failed on {lst}"
 
 
