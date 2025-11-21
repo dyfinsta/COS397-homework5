@@ -20,6 +20,7 @@ import pytest
 import numpy as np
 import time
 import psutil
+import os
 from basic_sort_UNIQUE_SUFFIX import int_sort
 
 
@@ -79,6 +80,21 @@ def test_quick(int_lists):
 
 
 def test_insertion(int_lists):
+    process = psutil.Process(os.getpid())
     for lst in int_lists:
+        # Begin tracking memory usage
+        mem_info = process.memory_info()
+        mem_before = mem_info.rss
+
+        # Run insertion sort
         sorted_lst = int_sort.insertion(lst.copy())
+
+        # Record memory usage at finish
+        mem_info = process.memory_info()
+        mem_after = mem_info.rss
+
+        print(f"\nInput list : {lst}")
+        print(f"Sorted list: {sorted_lst}")
+        print(f"Memory usage: {mem_after - mem_before}")
+        
         assert is_sorted(sorted_lst), f"insertion sort failed on {lst}"

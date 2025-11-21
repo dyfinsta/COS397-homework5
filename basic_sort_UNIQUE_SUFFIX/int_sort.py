@@ -41,7 +41,10 @@ def quick(int_list):
 
 
 def insertion(int_list):
-    """
-    insertion docstring
-    """
-    print("insertion sort")
+    sorted_list = int_list.copy()
+    for i in range(len(int_list)):
+        j = i
+        while j > 0 and sorted_list[j-1] > sorted_list[j]:
+            sorted_list[j],sorted_list[j-1] = sorted_list[j-1],sorted_list[j]
+            j -= 1
+    return sorted_list
