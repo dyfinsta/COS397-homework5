@@ -59,14 +59,16 @@ def test_quick(int_lists):
     for lst in int_lists:
         # Record runtime at start
         realtime_start = time.perf_counter()
-        cpu_start = process.cpu_times().user + process.cpu_times().system
+        cpu_timer_start = process.cpu_times()
+        cpu_start = cpu_timer_start.user + cpu_timer_start.system
 
         # Run quicksort
         sorted_lst = int_sort.quick(lst.copy())
 
         # Record runtime at finish
         realtime_end = time.perf_counter()
-        cpu_end = process.cpu_times().user + process.cpu_times().system
+        cpu_timer_end = process.cpu_times()
+        cpu_end = cpu_timer_end.user + cpu_timer_end.system
 
         # print results
         real_time = realtime_end - realtime_start
